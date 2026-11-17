@@ -1,0 +1,25 @@
+{
+  "name": "빅테크 투자 모니터",
+  "short_name": "빅테크 모니터",
+  "description": "2024·2025·2026 고정 기준 주가와 6·12개월 시나리오",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f8fc",
+  "theme_color": "#192945",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
