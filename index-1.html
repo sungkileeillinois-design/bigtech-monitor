@@ -1,0 +1,214 @@
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#f6f8fc"/><link rel="manifest" href="./manifest.webmanifest"/><title>빅테크 투자 모니터 | 2024 · 2025 · 2026 고정 기준</title><style>
+:root{--bg:#f6f8fc;--white:#fff;--ink:#172139;--muted:#667389;--border:#e0e6f1;--blue:#2367d9;--shadow:0 5px 21px rgba(27,53,97,.045)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:var(--ink);line-height:1.45}
+.container{max-width:1220px;padding:23px 20px 60px;margin:auto}
+h1{font-size:clamp(24px,3.7vw,32px);letter-spacing:-.8px;margin:3px 0 3px}h2{font-size:18px;margin:0 0 12px;letter-spacing:-.35px}
+.lede,.muted{color:var(--muted)}.lede{font-size:13px;margin:0}.eyebrow{font-size:11px;letter-spacing:1.4px;color:var(--blue);font-weight:800}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;flex-wrap:wrap;margin-bottom:18px}.pill{padding:7px 11px;border-radius:30px;background:#e9f1ff;color:#2454a5;font-size:12px;font-weight:700}
+.panel{background:white;border:1px solid var(--border);border-radius:16px;padding:19px;margin-bottom:13px;box-shadow:var(--shadow)}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:12px}
+.tabs,.toggles{display:flex;gap:5px;flex-wrap:wrap}.tab,.stockpill,button,.buttonfile{cursor:pointer;font:inherit}.tab{background:#f0f3f8;border:1px solid transparent;border-radius:9px;padding:9px 13px;font-size:13px;color:#5a6780;font-weight:700}.tab.active{background:#1e3153;color:#fff}
+.stockpill{background:white;border:1px solid var(--border);border-radius:9px;padding:6px 9px;font-size:12px;font-weight:700;opacity:.55}.stockpill.active{opacity:1;border-color:currentColor;background:#fbfcff}
+.chart-wrap{width:100%;position:relative;overflow:hidden}.chart-wrap svg{width:100%;height:auto;display:block;touch-action:pan-y}.tooltip{position:absolute;z-index:12;pointer-events:none;background:#172139;color:white;padding:7px 9px;border-radius:8px;font-size:12px;box-shadow:0 7px 18px #0003;white-space:nowrap;display:none}
+.chart-footer{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;margin-top:4px;font-size:12px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:9px;margin:10px 0 5px}.leg{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:650}.dot{height:9px;width:9px;border-radius:50%;flex-shrink:0}
+.summary{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin-bottom:14px}
+.reference-panel{background:#fff;border:1px solid #dce6f8;border-radius:16px;padding:14px 17px;margin-bottom:13px;box-shadow:var(--shadow)}
+.reference-heading{font-size:13px;font-weight:800;margin:0 0 10px;color:#2b3f61}
+.reference-panel .tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;width:100%}
+.reference-panel .tab{padding:10px 8px;min-height:44px}
+.reference-panel .tab:focus-visible{outline:3px solid #73a2f6;outline-offset:2px}
+.reference-note{font-size:12px;color:#536886;margin-top:10px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.summary-heading{font-size:14px;font-weight:800;color:#2b3f61;margin:0 0 9px}
+.stat .calc{font-size:10px;color:#6c7890;margin-top:4px;line-height:1.45}
+.stat .base-index{font-size:11px;color:#334c78;margin-top:3px;font-weight:700}
+.table th.active-col,.table td.active-col{background:#eef5ff;color:#1d58a6;font-weight:800}
+.stat{background:white;border:1px solid var(--border);border-radius:11px;padding:12px 10px}.stat .name{font-weight:750;font-size:12px;white-space:nowrap}.stat .big{font-size:20px;font-weight:830;letter-spacing:-.6px;margin:6px 0 0}.stat .small{font-size:11px;color:var(--muted);margin-top:3px}.pos{color:#0c946c}.neg{color:#cc4660}.neutral{color:var(--muted)}
+.table-scroll{overflow-x:auto}.table{border-collapse:collapse;width:100%;font-size:12px;min-width:720px}.table th,.table td{padding:9px 8px;text-align:right;border-bottom:1px solid #edf1f5;white-space:nowrap}.table th{color:#69758c;font-weight:750;font-size:11px;background:#f8faff}.table td:first-child,.table th:first-child{text-align:left;font-weight:700}.table tbody tr:last-child td{border:0}
+.smallinfo{font-size:11px;color:#7c8aa0;margin-top:8px}.event-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.event{padding:10px 12px;border-radius:11px;border:1px solid var(--border);background:#fbfcff;min-height:76px}.event .date{font-size:11px;font-weight:750;color:#3b6eaf}.event strong{font-size:12px}.event p{font-size:11px;color:var(--muted);margin:4px 0 0}.event .kind{font-size:10px;color:#7787a5;font-weight:700}
+.detailsummary{cursor:pointer;font-size:13px;font-weight:770;padding:2px 0}.io{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.action{background:#25385a;color:white;border:0;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:700;cursor:pointer}.action.secondary{background:#eff3fa;color:#304463;border:1px solid #dce3ed}.filelabel{display:inline-flex;align-items:center}.help{font-size:11px;color:#667389}.note{font-size:12px;line-height:1.55;color:#596985;margin:7px 0}.source-link{color:#2f67b5;text-decoration:none}.source-link:hover{text-decoration:underline}
+@media(max-width:850px){.container{padding:14px 10px 50px}.summary{grid-template-columns:repeat(4,minmax(0,1fr))}.stat{padding:10px 8px}.stat .big{font-size:18px}.event-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:13px}}
+@media(max-width:600px){.chart-wrap{overflow-x:auto}.chart-wrap svg{min-width:730px}}
+@media(max-width:500px){.summary{grid-template-columns:repeat(3,minmax(0,1fr))}.event-grid{grid-template-columns:1fr}.toolbar{align-items:flex-start}.tab{padding:8px 10px;font-size:12px}.stockpill{padding:5px 7px}}
+
+/* 모바일에서도 모든 차트가 화면 너비에 맞춰 보이도록 재설계 */
+html,body{max-width:100%;overflow-x:hidden}
+.panel,.toolbar,.chart-wrap{min-width:0}
+.chart-wrap,.chart-wrap svg{max-width:100%;overflow:hidden}
+.chart-wrap svg{width:100%;min-width:0;height:auto;display:block;touch-action:pan-y}
+@media(max-width:620px){
+ .chart-wrap{overflow:hidden!important}
+ .chart-wrap svg{min-width:0!important;width:100%!important;height:auto}
+ .table-scroll{overflow:visible}
+ .table{display:block;width:100%;min-width:0}
+ .table thead{display:none}
+ .table tbody{display:grid;grid-template-columns:1fr;gap:9px}
+ .table tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 8px;padding:11px;border:1px solid var(--border);border-radius:11px;background:#fcfdff}
+ .table tbody td{display:flex;align-items:flex-start;justify-content:space-between;flex-direction:column;padding:5px 3px;border:0;white-space:normal;text-align:left;min-width:0;font-size:13px;line-height:1.4}
+ .table tbody td:before{content:attr(data-label);color:var(--muted);font-size:10px;font-weight:650;margin-bottom:3px}
+ .table tbody td:first-child{grid-column:1/-1;display:block;font-size:16px;font-weight:800;padding:2px 2px 6px;border-bottom:1px solid #edf1f5}
+ .table tbody td:first-child:before{display:none}
+ .summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .toolbar{gap:8px;align-items:flex-start}
+ .reference-panel .tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+ .reference-panel .tabs button{white-space:nowrap;font-size:12px;padding:9px 6px}
+ .chart-footer{font-size:10px}
+}
+</style></head><body><div class="container">
+<header class="top"><div><div class="eyebrow">BIG TECH STOCK MONITOR</div><h1>빅테크 5종목 + 시장지수</h1><p class="lede">기간별 고정 기준: <b>2024.01.02</b> / <b>2025.01.02</b> / <b>2026.01.02</b> / <b>2026.07.01</b> = 각각 100 · 종가 기준</p></div><div><div class="pill" id="updateBadge">데이터: 2026.11.16</div><div id="syncBadge" class="smallinfo" style="text-align:right">단독 HTML: 자동 업데이트 없음</div></div></header>
+<p class="note" style="margin:-3px 0 11px">※ 모든 탭은 <b>해당 날짜의 종가를 100</b>으로 고정합니다. 2024·2025·2026년 1월 1일은 휴장일이므로 1월 2일 종가를 기준으로 합니다.</p>
+<section class="reference-panel" aria-label="수익률 기준일 선택"><div class="reference-heading">수익률 기준일 선택 <span style="font-size:11px;font-weight:500;color:#7788a0">· 누르면 위/아래 데이터 모두 바뀝니다</span></div>
+<div class="tabs" role="tablist" aria-label="수익률 기준일"><button class="tab active" data-window="all" role="tab" aria-selected="true">2024년 1월</button><button class="tab" data-window="y2025" role="tab" aria-selected="false">2025년 1월</button><button class="tab" data-window="year" role="tab" aria-selected="false">2026년 1월</button><button class="tab" data-window="half" role="tab" aria-selected="false">2026년 7월</button></div>
+<div class="reference-note"><span id="referenceDescription"><b>2024.01.02</b> 종가 = 100 · 현재까지의 누적 변화</span><span id="referenceUpdated">기준일은 고정 · 종가 기준</span></div></section>
+<div class="summary-heading" id="summaryHeading">선택 기준일 대비 현재 성과</div>
+<div class="summary" id="summary" aria-live="polite"></div>
+<section class="panel"><div class="toolbar"><h2>선택 기준일 이후 주가 추이</h2><span class="muted" style="font-size:12px" id="chartsub"></span></div>
+<div class="toggles" id="tickers"></div><div class="chart-wrap" id="wrap"><svg id="chart" viewBox="0 0 1000 440" aria-label="주가 변화 그래프"></svg><div class="tooltip" id="tip"></div></div>
+<div class="chart-footer"><span>실선: 과거 · <b style="color:#0fa977">●</b> 월 +20%↑ · <b style="color:#e15264">●</b> 월 −20%↓ · 점선: 기본 전망 · 음영: 비관~낙관</span><span id="viewinfo"></span></div>
+<div id="forecasttext" class="note" style="display:none"></div></section>
+<section class="panel"><h2>성과·고점·PER 한눈에 <span id="tableRefLabel" class="muted" style="font-size:12px;font-weight:600"></span></h2><div class="table-scroll"><table class="table"><thead><tr><th>종목</th><th>현재 종가</th><th>2024년 대비</th><th>2025.01.02 대비</th><th>2026.01.02 대비</th><th>2026.07.01 대비</th><th>최고점 대비</th><th>현재 PER</th><th>고점환산 PER</th><th>기존 판단</th></tr></thead><tbody id="databody"></tbody></table></div>
+<p class="smallinfo">2026년 기준 수익률은 각 지정일의 실제 종가 대비 계산합니다. 중간 경로에는 월별 표본을 사용합니다. 최고점은 2024.01 이후 기록된 일별 최고 <b>종가</b>로, 새 기록이 나오면 업데이트합니다. 고점환산 PER은 <b>최고 주가 ÷ 현재 EPS</b>이며 당시 실제 PER이 아닙니다. PER·판단은 2026.11.16의 참고 스냅샷으로 주가 CSV 업로드 시 자동 갱신되지 않습니다.</p></section>
+<section class="panel"><div class="toolbar"><h2>앞으로 1년, 중요한 이벤트와 재점검 시점</h2><span class="muted" style="font-size:11px">● 확정 공지 · ◇ 예정/추정 · ↻ 재검토</span></div><div class="event-grid" id="events"></div>
+<p class="smallinfo"><b>전문가 관점 요약:</b> Morgan Stanley는 AI 투자 사이클 자체는 유지된다고 보지만, J.P. Morgan AM은 2027년부터 막대한 AI CAPEX가 실제 매출·현금흐름을 창출하는지가 핵심이라고 지적합니다. 금리, 기업 실적, NVIDIA 리더십이 단기 변동성을 높일 수 있습니다. 수치 전망은 <b>이 대시보드의 가정</b>이며 증권사 공식 목표주가가 아닙니다.</p></section>
+<section class="panel"><details><summary class="detailsummary">↻ 매달 데이터 갱신하기 · CSV 불러오기 / 내려받기</summary>
+<p class="note">새 달의 <b>월말 종가 7개</b>를 한 행으로 추가해 CSV를 업로드하면 모든 기간 그래프와 성과·전망 출발점이 갱신됩니다. 이전 월별 기록을 지우지 않고 날짜별 병합합니다. 2024.01.02 / 2025.01.02 / 2026.01.02 / 2026.07.01 기준점은 그대로 유지합니다.</p>
+<div class="io"><label class="action filelabel">CSV 불러오기<input id="csvfile" type="file" accept=".csv,text/csv" style="display:none"/></label><button class="action secondary" id="exportcsv">전체 데이터 CSV 내려받기</button><button class="action secondary" id="reset">초기 자료로 되돌리기</button></div>
+<p class="help">필수 열: <code>date,aapl,nvda,googl,tsla,meta,spx,ixic</code> | 예: <code>2026-11-30,350,160,290,390,620,7500,25000</code> (형식 예시이며 실제 시세가 아닙니다). 일별 자료도 같은 형식으로 추가할 수 있습니다.</p><p class="help" id="importstatus"></p>
+</details><details style="margin-top:13px"><summary class="detailsummary">📱 안드로이드 앱처럼 사용하기 · 자동 갱신 설명</summary><p class="note"><b>이 HTML 파일만 열면 자동 업데이트되지 않습니다.</b> 제공된 배포용 패키지를 웹 호스팅에 올린 뒤, GitHub Actions 주간 작업을 활성화하면 매주 미국 증시 종가를 갱신할 수 있습니다(비공식 무료 데이터 소스 이용, 실패 가능). Chrome의 「홈 화면에 추가/설치」를 통해 앱처럼 실행할 수 있습니다.</p><p class="note">사이트 접속 시 마지막 성공한 가격이 보이며, 주가 동기화와 달리 PER·매매판단·이벤트 시나리오는 별도 재평가가 필요합니다.</p></details><details style="margin-top:13px"><summary class="detailsummary">자료 출처 · 수치 해석</summary><p class="note">과거 차트는 앞선 대시보드의 월별 종가 표본을 바탕으로 하며, 각 탭은 2024.01.02, 2025.01.02, 2026.01.02, 2026.07.01 종가를 각각 기준값 100으로 사용합니다. 2025.01.02 종가는 Yahoo Finance, AP 및 종가 아카이브에서 확인했고, 2026년 두 기준일 종가는 기존 검증값을 유지했습니다. 시작 종가는 Yahoo Finance·AP 및 종가 자료로 확인했으며, 시장 지수는 가격 지수(배당 제외)입니다. 주가와 PER 시점·산식이 서로 다를 수 있습니다. 2027년 이벤트의 예정/추정 날짜는 공식 발표에 따라 변경될 수 있습니다. 단독 HTML은 자동 시세 갱신이 없습니다. 별도 배포 패키지를 GitHub Pages에 올리면 매주 갱신 워크플로를 연결할 수 있으며, 실패 시 마지막 성공 데이터가 유지됩니다.</p>
+<p class="note"><a class="source-link" href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm" target="_blank">연준 2027년 FOMC 수정 일정</a> · <a class="source-link" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Sets-Conference-Call-for-Third-Quarter-Financial-Results/" target="_blank">NVIDIA 공식 실적 발표 일정</a> · <a class="source-link" href="https://am.jpmorgan.com/gr/en/asset-management/institutional/insights/market-insights/investment-outlook/tech-ai-risk-management/" target="_blank">J.P. Morgan AM 2027 전망</a> · <a class="source-link" href="https://www.morganstanley.com/insights/articles/investing-in-ai-after-2026-midterms-selloff" target="_blank">Morgan Stanley AI 시장 전망</a></p><p class="note"><a class="source-link" href="https://finance.yahoo.com/quote/AAPL/history/" target="_blank">Apple 종가</a> · <a class="source-link" href="https://finance.yahoo.com/quote/NVDA/history/" target="_blank">NVIDIA 종가</a> · <a class="source-link" href="https://finance.yahoo.com/quote/GOOGL/history/" target="_blank">Alphabet 종가</a> · <a class="source-link" href="https://finance.yahoo.com/quote/TSLA/history/" target="_blank">Tesla 종가</a> · <a class="source-link" href="https://finance.yahoo.com/quote/META/history/" target="_blank">Meta 종가</a> · <a class="source-link" href="https://apnews.com/article/c420c8b780879b647437126d92791454" target="_blank">2026.07.01 S&amp;P 500·나스닥 종가(AP)</a></p></details></section>
+</div>
+<script>
+'use strict';
+const BASE_DATE='2024-01-02';
+const PERIOD_BASES={all:'2024-01-02',y2025:'2025-01-02',year:'2026-01-02',half:'2026-07-01'};
+const LOCK_DATES=Object.values(PERIOD_BASES);
+const SERIES={"aapl":{"name":"Apple","color":"#15956a","pe":39.3,"highpe":40.2,"peak":356.27,"rec":"약 매도"},"nvda":{"name":"NVIDIA","color":"#eb8913","pe":19.7,"highpe":30.8,"peak":239.24,"rec":"약 매도"},"googl":{"name":"Google","color":"#2878df","pe":14.8,"highpe":21.3,"peak":402.12,"rec":"중 매수"},"tsla":{"name":"Tesla","color":"#d64d6a","pe":417.7,"highpe":548.7,"peak":489.88,"rec":"강 매도"},"meta":{"name":"Meta","color":"#8a58cc","pe":21.4,"highpe":27.1,"peak":787.42,"rec":"중 매수"},"spx":{"name":"S&P 500","color":"#7c8798","pe":null,"highpe":null,"peak":7818.93,"rec":"비교지수"},"ixic":{"name":"Nasdaq","color":"#27395b","pe":null,"highpe":null,"peak":27599.79,"rec":"비교지수"}};
+const SCENARIOS={"aapl":{"6":[-18,7,18],"12":[-25,10,30]},"nvda":{"6":[-35,5,45],"12":[-45,15,75]},"googl":{"6":[-25,12,35],"12":[-32,25,55]},"tsla":{"6":[-40,5,45],"12":[-55,8,80]},"meta":{"6":[-25,12,35],"12":[-35,22,55]},"spx":{"6":[-14,6,14],"12":[-22,9,25]},"ixic":{"6":[-20,8,22],"12":[-28,12,35]}};
+const EVENTS=[{"date":"2024-02-01","name":"Meta 첫 배당·실적","type":"past","detail":"Meta의 첫 배당 발표와 예상 상회 실적"},{"date":"2024-04-25","name":"Alphabet 첫 배당","type":"past","detail":"Alphabet의 첫 배당 발표와 실적 호조"},{"date":"2024-05-22","name":"NVIDIA 실적·분할","type":"past","detail":"실적 발표와 10대1 주식분할 발표"},{"date":"2024-06-10","name":"Apple Intelligence","type":"past","detail":"WWDC에서 Apple Intelligence 공개"},{"date":"2024-09-18","name":"연준 금리 인하","type":"past","detail":"미국 통화정책의 주요 전환점"},{"date":"2024-10-10","name":"Tesla 로보택시 공개","type":"past","detail":"We, Robot 행사"},{"date":"2026-11-12","name":"NVIDIA CEO 사임","type":"past","detail":"회사 공식 발표: 최고경영진 전환"},{"date":"2026-11-17","name":"NVIDIA 실적 발표","type":"fixed","detail":"미국시간 11/17 장 마감 후; 성장률·수익성·새 경영진 설명 점검","review":true,"source":"https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Sets-Conference-Call-for-Third-Quarter-Financial-Results/"},{"date":"2026-12-09","name":"FOMC / 전망 점검","type":"fixed","detail":"2026.12.8~9 공식 회의, 경제전망 포함","review":true,"source":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},{"date":"2027-01-29","name":"빅테크 실적 시즌","type":"expected","detail":"1~2월 Apple·Meta·Alphabet·Tesla 실적 발표 기간(정확한 날짜 미정)","review":true},{"date":"2027-03-17","name":"FOMC","type":"fixed","detail":"2027.3.16~17 수정 공지 일정","review":true,"source":"https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm"},{"date":"2027-04-30","name":"1분기 실적 점검","type":"expected","detail":"4~5월 빅테크 실적 시즌, AI CAPEX·현금흐름 점검","review":true},{"date":"2027-06-09","name":"FOMC","type":"fixed","detail":"2027.6.8~9 수정 공지 일정","review":true,"source":"https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm"},{"date":"2027-06-15","name":"WWDC / AI","type":"expected","detail":"Apple 연례 개발자 행사 예상 기간(일자 미정)","review":false},{"date":"2027-07-30","name":"2분기 실적 점검","type":"expected","detail":"7~8월 주요 빅테크 실적 및 AI 투자 회수 지표 확인","review":true},{"date":"2027-09-15","name":"FOMC","type":"fixed","detail":"2027.9.14~15 수정 공지 일정","review":true,"source":"https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm"},{"date":"2027-09-22","name":"iPhone 신제품","type":"expected","detail":"Apple 가을 제품 공개 예상 기간(확정 아님)","review":false},{"date":"2027-10-29","name":"3분기 실적 점검","type":"expected","detail":"10~11월 실적 발표 시즌 및 데이터센터 투자 계획 재점검","review":true},{"date":"2027-11-17","name":"FOMC 전략회의","type":"fixed","detail":"2027.11.16~17 예정, 정기 금리결정이 아닌 전략 토의","review":true,"source":"https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm"}];
+const INITIAL=[{"date":"2024-01-02","aapl":185.64,"nvda":48.17,"googl":138.17,"tsla":248.42,"meta":346.29,"spx":4742.83,"ixic":14765.94},{"date":"2024-01-31","aapl":184.2692,"nvda":61.5187,"googl":140.0142,"tsla":187.2832,"meta":389.9368,"spx":4845.507,"ixic":15164.3219},{"date":"2024-02-29","aapl":180.7919,"nvda":79.0937,"googl":138.3378,"tsla":201.8736,"meta":490.2489,"spx":5096.0051,"ixic":16092.2176},{"date":"2024-03-31","aapl":171.4526,"nvda":90.3328,"googl":150.7603,"tsla":175.7923,"meta":485.5552,"spx":5253.9661,"ixic":16380.1048},{"date":"2024-04-30","aapl":170.2395,"nvda":86.3686,"googl":162.5501,"tsla":183.2819,"meta":430.0343,"spx":5035.3867,"ixic":15657.5858},{"date":"2024-05-31","aapl":192.3321,"nvda":109.5834,"googl":172.2067,"tsla":178.0776,"meta":466.5441,"spx":5277.07,"ixic":16734.6606},{"date":"2024-06-30","aapl":210.6395,"nvda":123.4786,"googl":182.0065,"tsla":197.8807,"meta":504.2879,"spx":5460.1686,"ixic":17731.8693},{"date":"2024-07-31","aapl":222.0144,"nvda":116.9486,"googl":171.3664,"tsla":232.0756,"meta":474.7565,"spx":5521.8527,"ixic":17598.7045},{"date":"2024-08-31","aapl":229.1212,"nvda":119.2887,"googl":163.1642,"tsla":214.1139,"meta":521.091,"spx":5647.7346,"ixic":17712.9192},{"date":"2024-09-30","aapl":233.0428,"nvda":121.3536,"googl":165.8105,"tsla":261.627,"meta":572.5726,"spx":5761.8023,"ixic":18187.4438},{"date":"2024-10-31","aapl":225.873,"nvda":132.652,"googl":171.0194,"tsla":249.855,"meta":567.5487,"spx":5704.744,"ixic":18092.6884},{"date":"2024-11-30","aapl":237.4609,"nvda":138.1316,"googl":168.8179,"tsla":345.1763,"meta":574.1436,"spx":6031.6085,"ixic":19216.0525},{"date":"2024-12-31","aapl":250.4742,"nvda":134.1692,"googl":189.3107,"tsla":403.8582,"meta":585.6367,"spx":5880.8014,"ixic":19308.0967},{"date":"2025-01-02","aapl":243.85,"nvda":138.31,"googl":189.43,"tsla":379.28,"meta":599.24,"spx":5868.55,"ixic":19280.79},{"date":"2025-01-31","aapl":235.9577,"nvda":119.95,"googl":203.9826,"tsla":404.6274,"meta":689.1622,"spx":6039.5656,"ixic":19624.5535},{"date":"2025-02-28","aapl":241.9777,"nvda":124.785,"googl":170.1968,"tsla":292.9921,"meta":668.0268,"spx":5953.7867,"ixic":18845.2706},{"date":"2025-03-31","aapl":222.1726,"nvda":108.2664,"googl":154.7001,"tsla":259.182,"meta":576.5479,"spx":5611.4278,"ixic":17297.9011},{"date":"2025-04-30","aapl":212.4501,"nvda":108.7981,"googl":158.8176,"tsla":282.1728,"meta":549.01,"spx":5568.7649,"ixic":17444.7591},{"date":"2025-05-31","aapl":200.9868,"nvda":134.9629,"googl":171.7138,"tsla":346.4816,"meta":647.3232,"spx":5911.2269,"ixic":19112.2872},{"date":"2025-06-30","aapl":205.2305,"nvda":157.7982,"googl":176.37,"tsla":317.6904,"meta":738.262,"spx":6204.4059,"ixic":20367.7611},{"date":"2025-07-31","aapl":207.5534,"nvda":177.6335,"googl":191.9961,"tsla":308.2883,"meta":773.4107,"spx":6339.0233,"ixic":21121.1573},{"date":"2025-08-31","aapl":232.289,"nvda":173.9411,"googl":212.9608,"tsla":333.8777,"meta":738.4802,"spx":6460.0801,"ixic":21454.6573},{"date":"2025-09-30","aapl":254.7016,"nvda":186.3266,"googl":243.3043,"tsla":444.7272,"meta":734.4368,"spx":6688.1016,"ixic":22658.0374},{"date":"2025-10-31","aapl":270.3401,"nvda":202.2024,"googl":281.3523,"tsla":456.5591,"meta":648.2548,"spx":6839.9019,"ixic":23722.7282},{"date":"2025-11-30","aapl":278.9937,"nvda":176.7294,"googl":320.2872,"tsla":430.172,"meta":647.6866,"spx":6848.774,"ixic":23364.2817},{"date":"2025-12-31","aapl":271.8883,"nvda":186.2033,"googl":313.2183,"tsla":449.7039,"meta":660.1986,"spx":6845.3299,"ixic":23240.2189},{"date":"2026-01-02","aapl":271.01,"nvda":188.85,"googl":315.15,"tsla":438.07,"meta":650.41,"spx":6858.47,"ixic":23235.63},{"date":"2026-01-31","aapl":259.4194,"nvda":190.8043,"googl":338.1509,"tsla":430.4137,"meta":716.4473,"spx":6939.091,"ixic":23460.7667},{"date":"2026-02-28","aapl":264.2745,"nvda":176.879,"googl":311.8242,"tsla":402.5248,"meta":647.9189,"spx":6878.7011,"ixic":22667.5664},{"date":"2026-03-31","aapl":253.7927,"nvda":174.0866,"googl":287.7341,"tsla":371.7736,"meta":572.2132,"spx":6528.5564,"ixic":21590.6414},{"date":"2026-04-30","aapl":271.2527,"nvda":199.1897,"googl":384.9393,"tsla":381.6646,"meta":611.8127,"spx":7208.8113,"ixic":24891.6019},{"date":"2026-05-31","aapl":312.1211,"nvda":210.724,"googl":380.3688,"tsla":435.8248,"meta":632.2558,"spx":7580.0432,"ixic":26972.2705},{"date":"2026-06-30","aapl":289.3206,"nvda":199.9173,"googl":357.5239,"tsla":420.6165,"meta":563.4369,"spx":7499.6732,"ixic":26214.0879},{"date":"2026-07-01","aapl":294.38,"nvda":197.58,"googl":361.21,"tsla":425.3,"meta":612.91,"spx":7483.23,"ixic":26040.03},{"date":"2026-07-31","aapl":308.7621,"nvda":200.5592,"googl":356.174,"tsla":311.2156,"meta":556.6906,"spx":7489.9021,"ixic":25374.9837},{"date":"2026-08-31","aapl":316.8555,"nvda":220.5555,"googl":339.3043,"tsla":367.9519,"meta":572.1752,"spx":7686.1154,"ixic":26371.9572},{"date":"2026-09-30","aapl":332.8894,"nvda":228.3871,"googl":344.163,"tsla":354.8177,"meta":725.3174,"spx":7651.5058,"ixic":26862.2074},{"date":"2026-10-31","aapl":344.3772,"nvda":204.6396,"googl":279.8304,"tsla":399.8105,"meta":614.9715,"spx":7580.325,"ixic":25438.2564},{"date":"2026-11-16","aapl":352.78,"nvda":156.14,"googl":283.72,"tsla":379.74,"meta":626.41,"spx":7416.59,"ixic":24509.76}];
+const KEYS=Object.keys(SERIES);
+const NS='http://www.w3.org/2000/svg';
+let records=INITIAL.map(x=>({...x}));let windowMode='all',selected='nvda';
+const fmtNum=(x,dec=1)=>Number(x).toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+const pct=(x,d=1)=>(x>0?'+':'')+fmtNum(x,d)+'%';
+const fmtDate=s=>s.slice(0,7).replace('-','.');
+const fmtPrice=(k,v)=>k==='spx'||k==='ixic'?fmtNum(v,0):'$'+fmtNum(v,2);
+function parseDate(s){return Date.parse(s+'T00:00:00Z')}
+function addMonths(day,months){const d=new Date(parseDate(day));let y=d.getUTCFullYear(),m=d.getUTCMonth()+months;return new Date(Date.UTC(y,m,d.getUTCDate()>28?28:d.getUTCDate())).toISOString().slice(0,10)}
+function shiftMonths(d,n){const x=new Date(parseDate(d)); x.setUTCMonth(x.getUTCMonth()+n);return x.toISOString().slice(0,10)}
+function sortRecords(){records.sort((a,b)=>a.date.localeCompare(b.date))}
+function latest(){return records[records.length-1]}
+function base(mode='all'){const date=PERIOD_BASES[mode];return records.find(r=>r.date===date)||INITIAL.find(r=>r.date===date)}
+function windowStart(mode){return PERIOD_BASES[mode]}
+function visibleData(mode){const st=windowStart(mode);return records.filter(r=>r.date>=st)}
+function periodReturn(key,mode){const end=latest(),b=base(mode);return (end[key]/b[key]-1)*100}
+const points=(v)=>v;
+function makeSvg(tag,attrs={},textVal){let e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v)); if(textVal!==undefined)e.textContent=textVal;return e}
+function updateStatic(){
+ const end=latest(),viewB=base(windowMode),b=base('all');
+ const periodLabel=({all:'2024.01.02',y2025:'2025.01.02',year:'2026.01.02',half:'2026.07.01'})[windowMode];
+ document.getElementById('updateBadge').textContent='데이터: '+end.date.replaceAll('-','.');
+ document.getElementById('referenceDescription').innerHTML='<b>'+periodLabel+'</b> 종가 = 100 → <b>'+end.date.replaceAll('-','.')+'</b>까지 누적 변화';
+ document.getElementById('referenceUpdated').textContent='기준 종가와 현재 종가를 직접 비교';
+ document.getElementById('summaryHeading').textContent=periodLabel+' 대비 현재 성과 (7개 종목·지수)';
+ document.getElementById('tableRefLabel').textContent='· 선택: '+periodLabel;
+ document.querySelectorAll('.tab').forEach(tab=>{const active=tab.dataset.window===windowMode;tab.classList.toggle('active',active);tab.setAttribute('aria-selected',active?'true':'false')});
+ const summary=document.getElementById('summary');summary.replaceChildren();const body=document.getElementById('databody');body.replaceChildren();
+ for(const key of KEYS){
+  const s=SERIES[key];const since=(end[key]/b[key]-1)*100;
+  const high=Math.max(s.peak,...records.map(r=>r[key]));const dd=(end[key]/high-1)*100;
+  const viewPerf=(end[key]/viewB[key]-1)*100;const viewIndex=end[key]/viewB[key]*100;
+  const el=document.createElement('div');el.className='stat';
+  el.innerHTML=`<div class="name"><span style="color:${s.color}">●</span> ${s.name}</div><div class="big ${viewPerf>=0?'pos':'neg'}">${pct(viewPerf)}</div><div class="base-index">100 → ${fmtNum(viewIndex,1)}</div><div class="calc">${fmtPrice(key,viewB[key])} → ${fmtPrice(key,end[key])}</div><div class="small">고점 대비 <b class="neg">${pct(dd)}</b></div>`;
+  summary.appendChild(el);
+  const tr=document.createElement('tr');tr.innerHTML=`<td><span style="color:${s.color}">●</span> ${s.name}</td><td>${fmtPrice(key,end[key])}</td><td class="${since>=0?'pos':'neg'}">${pct(since)}</td><td>${pct(periodReturn(key,'y2025'))}</td><td>${pct(periodReturn(key,'year'))}</td><td>${pct(periodReturn(key,'half'))}</td><td class="neg"><b>${pct(dd)}</b></td><td>${s.pe==null?'—':fmtNum(s.pe,1)+'배'}</td><td>${s.highpe==null?'—':fmtNum(s.highpe,1)+'배'}</td><td>${s.rec}</td>`;
+  const labels=['종목','현재 종가','2024년 대비','2025년 대비','2026년 대비','2026.07 대비','고점 대비','현재 PER','고점환산 PER','기존 판단'];
+  const col={all:2,y2025:3,year:4,half:5}[windowMode];tr.querySelectorAll('td').forEach((td,i)=>{td.dataset.label=labels[i]||'';if(i===col)td.classList.add('active-col')});body.appendChild(tr);
+ }
+ document.querySelectorAll('.table thead th').forEach((th,i)=>th.classList.toggle('active-col',i==={all:2,y2025:3,year:4,half:5}[windowMode]));
+}
+function updateTickers(){let area=document.getElementById('tickers');area.replaceChildren();for(const k of KEYS){let b=document.createElement('button');b.className='stockpill'+(k===selected?' active':'');b.textContent='● '+SERIES[k].name;b.style.color=SERIES[k].color;b.addEventListener('click',()=>{selected=k;updateTickers();draw()});area.appendChild(b)}}
+function updateEvents(){let out=document.getElementById('events');out.replaceChildren();const d=latest().date;let upcoming=EVENTS.filter(e=>e.date>=d&&e.date<=addMonths(d,12));
+if(!upcoming.length){out.innerHTML='<p class="note">향후 1년 이벤트 목록을 재검토해 주세요. 기존 일정은 2027년 11월까지만 등록되어 있습니다.</p>';return}
+for(const e of upcoming){let c=document.createElement('div');c.className='event';let badge=e.type==='fixed'?'● 공식 일정':'◇ 예상 기간';c.innerHTML=`<div class="date">${e.date.replaceAll('-','.')} <span class="kind">${badge}${e.review?' · ↻ 재점검':''}</span></div><strong>${e.name}</strong><p>${e.detail}</p>`;out.appendChild(c)}}
+function draw(){const svg=document.getElementById('chart');svg.replaceChildren();const desc=document.getElementById('chartsub');const showFuture=windowMode==='half';const rows=visibleData(windowMode),end=latest(),b=base(windowMode);
+const start=windowStart(windowMode,end.date),forecastEnd=addMonths(end.date,12),finalX=showFuture?parseDate(forecastEnd):parseDate(end.date);
+const sx0=parseDate(rows[0].date),sxMin=showFuture?Math.min(sx0,parseDate(start)):sx0;
+const narrow=window.matchMedia('(max-width: 620px)').matches;const margin=narrow?{left:39,right:10,top:29,bottom:47}:{left:63,right:22,top:32,bottom:50},w=narrow?430:1000,h=narrow?465:440,iw=w-margin.left-margin.right,ih=h-margin.top-margin.bottom;svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+const x=t=>margin.left+(parseDate(t)-sxMin)/(finalX-sxMin||1)*iw;
+const norm=(row,k)=>row[k]/b[k]*100;
+const selectedV=norm(end,selected),fc=SCENARIOS[selected];
+let values=rows.flatMap(r=>KEYS.map(k=>norm(r,k)));
+if(showFuture){values.push(selectedV*(1+fc['6'][0]/100),selectedV*(1+fc['6'][2]/100),selectedV*(1+fc['12'][0]/100),selectedV*(1+fc['12'][2]/100))}
+let ymin=Math.min(...values)*.90,ymax=Math.max(...values)*1.10;if(windowMode==='all')ymin=Math.min(ymin,90);if(ymax-ymin<35){const mid=(ymin+ymax)/2;ymin=mid-18;ymax=mid+18}
+const y=v=>margin.top+(ymax-v)/(ymax-ymin)*ih;
+// background axes & grid
+svg.appendChild(makeSvg('rect',{x:0,y:0,width:w,height:h,fill:'#ffffff'}));
+for(let i=0;i<=5;i++){let value=ymin+(ymax-ymin)*i/5,py=y(value);svg.appendChild(makeSvg('line',{x1:margin.left,y1:py,x2:w-margin.right,y2:py,stroke:'#e9eef5','stroke-width':1}));svg.appendChild(makeSvg('text',{x:margin.left-10,y:py+4,'font-size':11,'text-anchor':'end',fill:'#718097'},fmtNum(value,0)))}
+let nTicks=narrow?(windowMode==='all'?4:3):(windowMode==='all'?7:showFuture?7:6);for(let i=0;i<nTicks;i++){const ti=sxMin+(finalX-sxMin)*i/(nTicks-1),dt=new Date(ti).toISOString().slice(0,10),px=margin.left+iw*i/(nTicks-1);svg.appendChild(makeSvg('line',{x1:px,y1:margin.top,x2:px,y2:h-margin.bottom,stroke:'#f3f5f9'}));svg.appendChild(makeSvg('text',{x:px,y:h-margin.bottom+21,'font-size':11,'text-anchor':'middle',fill:'#7f8da4'},fmtDate(dt)))}
+if(showFuture){svg.appendChild(makeSvg('rect',{x:x(end.date),y:margin.top,width:Math.max(0,w-margin.right-x(end.date)),height:ih,fill:'#f7faff'}));svg.appendChild(makeSvg('line',{x1:x(end.date),y1:margin.top,x2:x(end.date),y2:h-margin.bottom,stroke:'#99adca','stroke-width':1.5,'stroke-dasharray':'5 5'}));svg.appendChild(makeSvg('text',{x:x(end.date)+7,y:margin.top+15,'font-size':12,fill:'#5275b6','font-weight':'700'},'전망 구간'))}
+// highlighted historical event markers (limited to avoid clutter)
+let relevant=EVENTS.filter(e=>showFuture?((e.type==='past'&&e.date>=rows[0].date&&e.date<=end.date)||(e.type!=='past'&&e.date>=end.date&&e.date<=forecastEnd)):e.type==='past'&&e.date>=rows[0].date&&e.date<=end.date);
+let maxMarks=showFuture?5:4;if(relevant.length>maxMarks){let focus=relevant.filter(e=>e.review||e.type==='past');relevant=focus.filter((e,i)=>i===0||i===Math.floor((focus.length-1)/3)||i===Math.floor((focus.length-1)*2/3)||i===focus.length-1).slice(0,maxMarks)}
+for(const e of relevant){const px=x(e.date);if(!Number.isFinite(px)||px<margin.left||px>w-margin.right)continue;svg.appendChild(makeSvg('line',{x1:px,y1:margin.top+3,x2:px,y2:h-margin.bottom,stroke:e.type==='fixed'?'#9eb7d9':'#bec7d6','stroke-width':1,'stroke-dasharray':'3 5'}));if(narrow)continue;const boxw=Math.min(106,Math.max(68,e.name.length*10));const bx=Math.min(w-margin.right-boxw-2,Math.max(margin.left,px-boxw/2));let by=margin.top+4+((relevant.indexOf(e)%2)*22);svg.appendChild(makeSvg('rect',{x:bx,y:by,width:boxw,height:17,rx:5,fill:e.type==='fixed'?'#dce8fd':'#eef1f5'}));svg.appendChild(makeSvg('text',{x:bx+boxw/2,y:by+12,'font-size':10,'text-anchor':'middle',fill:'#42638d','font-weight':'650'},e.name.slice(0,12)))}
+// histories line, selected line thicker
+for(const k of KEYS){const pts=rows.map(r=>[x(r.date),y(norm(r,k))]);const path=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(2)+','+p[1].toFixed(2)).join(' ');
+svg.appendChild(makeSvg('path',{d:path,fill:'none',stroke:SERIES[k].color,'stroke-width':k===selected?4:2.1,'stroke-opacity':k===selected?1:.63,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':k==='spx'?'5 5':k==='ixic'?'8 4':undefined}));
+const last=pts[pts.length-1];svg.appendChild(makeSvg('circle',{cx:last[0],cy:last[1],r:k===selected?4:2.4,fill:SERIES[k].color}));}
+// Monthly moves of at least +/-20% highlighted (monthly close vs prior monthly close).
+for(let i=1;i<rows.length;i++){const prev=rows[i-1],cur=rows[i]; if(parseDate(cur.date)-parseDate(prev.date)<18*86400000)continue; for(const k of KEYS){const move=(cur[k]/prev[k]-1)*100;if(Math.abs(move)<20)continue;const cx=x(cur.date),cy=y(norm(cur,k));svg.appendChild(makeSvg('circle',{cx,cy,r:k===selected?6:4.5,fill:move>0?'#0fa977':'#e15264',stroke:'#ffffff','stroke-width':1.6}));}}
+if(showFuture){const col=SERIES[selected].color, low6=selectedV*(1+fc['6'][0]/100),mid6=selectedV*(1+fc['6'][1]/100),high6=selectedV*(1+fc['6'][2]/100),low12=selectedV*(1+fc['12'][0]/100),mid12=selectedV*(1+fc['12'][1]/100),high12=selectedV*(1+fc['12'][2]/100);
+let x0=x(end.date),x6=x(addMonths(end.date,6)),x12=x(forecastEnd);
+const area=`M${x0},${y(selectedV)} L${x6},${y(high6)} L${x12},${y(high12)} L${x12},${y(low12)} L${x6},${y(low6)} Z`;
+// area should be behind dashed lines but above grid; rendered after history and may overlap early portion no historical overlap
+svg.appendChild(makeSvg('path',{d:area,fill:col,'fill-opacity':.12,stroke:'none'}));
+for(let [vals,opacity,width] of [[[selectedV,mid6,mid12],1,3],[[selectedV,low6,low12],.43,1.4],[[selectedV,high6,high12],.43,1.4]]){
+const p=`M${x0},${y(vals[0])} L${x6},${y(vals[1])} L${x12},${y(vals[2])}`;svg.appendChild(makeSvg('path',{d:p,fill:'none',stroke:col,'stroke-opacity':opacity,'stroke-width':width,'stroke-dasharray':'7 6'}))}
+for(const [xx,yy,label] of [[x6,mid6,'6개월'],[x12,mid12,'12개월']]){svg.appendChild(makeSvg('circle',{cx:xx,cy:y(yy),r:4.7,fill:col,stroke:'#fff','stroke-width':2}));svg.appendChild(makeSvg('text',{x:xx+(xx>x0+iw*.45?-8:8),y:y(yy)-11,'font-size':12,'text-anchor':xx>x0+iw*.45?'end':'start',fill:col,'font-weight':'800'},label+' '+pct((yy/selectedV-1)*100,0)))}
+const pl=selected;document.getElementById('forecasttext').innerHTML=`<b style="color:${col}">${SERIES[pl].name}</b> · 6개월 비관 <b>${pct(fc['6'][0],0)}</b> / 기본 <b>${pct(fc['6'][1],0)}</b> / 낙관 <b>${pct(fc['6'][2],0)}</b> &nbsp; | &nbsp; 12개월 비관 <b>${pct(fc['12'][0],0)}</b> / 기본 <b>${pct(fc['12'][1],0)}</b> / 낙관 <b>${pct(fc['12'][2],0)}</b>`;}
+document.getElementById('forecasttext').style.display=showFuture?'block':'none';
+desc.textContent=showFuture?'2026.07.01 = 100 · 현재까지 + 향후 12개월 전망':`${windowStart(windowMode)} = 100 · 고정 기준 추이`;
+document.getElementById('viewinfo').textContent=`기준점 100 = ${windowStart(windowMode)} 종가 · 최신 ${end.date}`;
+// interactive hover over chart
+const overlay=makeSvg('rect',{x:margin.left,y:margin.top,width:iw,height:ih,fill:'transparent','pointer-events':'all'});svg.appendChild(overlay);
+const tip=document.getElementById('tip'),wrap=document.getElementById('wrap');
+function show(e){let box=svg.getBoundingClientRect(),px=(e.clientX-box.left)/box.width*w; if(px<x(rows[0].date)||px>x(end.date)){tip.style.display='none';return}
+let dateValue=sxMin+(px-margin.left)/iw*(finalX-sxMin),best=rows.reduce((a,v)=>Math.abs(parseDate(v.date)-dateValue)<Math.abs(parseDate(a.date)-dateValue)?v:a,rows[0]);
+let yy=norm(best,selected),tipX=x(best.date),tipY=y(yy);tip.innerHTML=`<b>${best.date}</b> · ${SERIES[selected].name}<br>${fmtPrice(selected,best[selected])} / 지수 ${fmtNum(yy,1)}`;const left=tipX/w*box.width+8;const top=tipY/h*box.height-42;tip.style.left=Math.min(box.width-155,Math.max(0,left))+'px';tip.style.top=Math.max(3,top)+'px';tip.style.display='block';}
+overlay.addEventListener('pointermove',show);overlay.addEventListener('pointerdown',show);overlay.addEventListener('pointerleave',()=>tip.style.display='none');}
+function render(){sortRecords();updateStatic();updateTickers();updateEvents();draw()}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{windowMode=b.dataset.window;try{localStorage.setItem('bigtech_reference_mode',windowMode)}catch(_){ }updateStatic();draw()}));
+function csvEscape(s){return String(s).replaceAll('"','""')}
+function downloadCSV(){const header=['date',...KEYS],body=records.map(r=>header.map(k=>csvEscape(r[k])).join(','));const blob=new Blob(['\ufeff'+[header.join(','),...body].join('\r\n')],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='bigtech_prices_2024_baseline_'+latest().date+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
+document.getElementById('exportcsv').onclick=downloadCSV;
+function parseCSV(text){const str=text.replace(/^\ufeff/,'').trim();const lines=str.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);const head=lines.shift().split(',').map(v=>v.trim().toLowerCase());if(!['date',...KEYS].every(x=>head.includes(x)))throw Error('필수 열(date,aapl,nvda,googl,tsla,meta,spx,ixic)이 모두 있어야 합니다.');const acc=[];for(let line of lines){let vals=line.split(',');if(vals.length!==head.length)throw Error('콤마 또는 열 개수가 맞지 않습니다: '+line);let obj={};head.forEach((c,i)=>obj[c]=vals[i].trim().replace(/^"|"$/g,''));if(!/^\d{4}-\d\d-\d\d$/.test(obj.date)||Number.isNaN(parseDate(obj.date)))throw Error('날짜 형식 오류: '+obj.date);let row={date:obj.date};for(const k of KEYS){row[k]=Number(obj[k]);if(!Number.isFinite(row[k])||row[k]<=0)throw Error(obj.date+' '+k+' 종가를 확인하세요.')}acc.push(row)}if(!acc.length)throw Error('불러올 행이 없습니다.');return acc}
+document.getElementById('csvfile').addEventListener('change',async e=>{const out=document.getElementById('importstatus');try{const f=e.target.files[0];if(!f)return;const list=parseCSV(await f.text()),m=new Map(records.map(r=>[r.date,r]));for(const r of list){if(LOCK_DATES.includes(r.date)){const old=INITIAL.find(z=>z.date===r.date);for(const k of KEYS)if(Math.abs(old[k]-r[k])>.001)throw Error(r.date+' 고정 기준 종가는 변경할 수 없습니다.')}m.set(r.date,r)}records=[...m.values()].sort((a,b)=>a.date.localeCompare(b.date));const data=JSON.stringify(records);try{localStorage.setItem('bigtech_2024_v2',data);out.textContent='✓ '+list.length+'개 행을 반영했습니다. 브라우저 저장 후 CSV로도 백업하세요.'}catch(_){out.textContent='✓ '+list.length+'개 행을 반영했습니다. CSV 내려받기로 백업하세요.'}render()}catch(err){out.textContent='오류: '+err.message}e.target.value=''})
+document.getElementById('reset').addEventListener('click',()=>{if(!confirm('추가한 주가 데이터를 초기화할까요?'))return;records=INITIAL.map(x=>({...x}));try{localStorage.removeItem('bigtech_2024_v2')}catch(_){ }document.getElementById('importstatus').textContent='초기 데이터로 복구했습니다.';render()});
+try{const saved=JSON.parse(localStorage.getItem('bigtech_2024_v2')||'null');if(Array.isArray(saved)&&saved.some(r=>r.date===BASE_DATE)){const m=new Map(saved.map(r=>[r.date,r]));for(const d of LOCK_DATES)m.set(d,INITIAL.find(r=>r.date===d));records=[...m.values()].sort((a,b)=>a.date.localeCompare(b.date))}}catch(_){ }
+try{const savedMode=localStorage.getItem('bigtech_reference_mode');if(savedMode&&Object.hasOwn(PERIOD_BASES,savedMode))windowMode=savedMode}catch(_){ }
+render();
+async function syncHosted(){
+ if(!/^https?:$/.test(location.protocol))return;
+ const status=document.getElementById('syncBadge');status.textContent='웹 주가 데이터 확인 중…';
+ try{
+  const res=await fetch('./updates.json?nocache='+Date.now(),{cache:'no-store'});
+  if(!res.ok)throw Error('HTTP '+res.status);
+  const j=await res.json();if(!Array.isArray(j.rows))throw Error('데이터 구조 오류');
+  const m=new Map(records.map(r=>[r.date,r]));let accepted=0;
+  for(const raw of j.rows){
+    const d=raw.date;if(LOCK_DATES.includes(d))continue;
+    if(!/^20\d{2}-\d{2}-\d{2}$/.test(d))continue;
+    const r={date:d};let valid=true;
+    for(const k of KEYS){r[k]=Number(raw[k]);if(!(Number.isFinite(r[k])&&r[k]>0))valid=false}
+    if(valid){m.set(d,r);accepted++}
+  }
+  records=[...m.values()].sort((a,b)=>a.date.localeCompare(b.date));
+  const sourceDate=j.updated||'미설정';
+  status.textContent=accepted?`웹 주가 동기화 ✓ · ${sourceDate} · 최신 ${latest().date}`:`주간 자동 업데이트 대기 · 최신 ${latest().date}`;
+  render();
+ }catch(e){status.textContent='웹 자동 동기화 실패 · 저장된 자료 표시'}
+}
+syncHosted();
+if('serviceWorker' in navigator && location.protocol==='https:')navigator.serviceWorker.register('./sw.js').catch(()=>{});
+window.addEventListener('resize',()=>{clearTimeout(window.__rTimer);window.__rTimer=setTimeout(draw,150)});
+</script></body></html>
