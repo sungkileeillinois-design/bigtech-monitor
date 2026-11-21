@@ -1,7 +1,18 @@
 {
-  "updated": "2026-11-17 06:43 UTC",
+  "updated": "2026-11-21 04:02 UTC",
   "source": "Yahoo Finance via yfinance (unofficial, subject to gaps and changes)",
-  "rows": [],
+  "rows": [
+    {
+      "date": "2026-11-20",
+      "aapl": 342.56,
+      "nvda": 125.53,
+      "googl": 265.29,
+      "tsla": 345.82,
+      "meta": 560.84,
+      "spx": 6910.3901,
+      "ixic": 22617.7324
+    }
+  ],
   "monthly_first": [
     {
       "date": "2024-01-02",
